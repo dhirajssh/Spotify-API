@@ -10,6 +10,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Avatar } from '@material-ui/core';
+import { grey } from '@material-ui/core/colors';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -37,28 +38,31 @@ function Artists() {
 
   return (
     <div className={classes.root}>
+      <div className="container-fluid">
       <Grid container spacing={3}>
       {artist.data.artists.items.map( item=>{
         return(
-          <Grid item xs={4}>
-            <Card className={classes.root}>
+          <Grid item sm={4}>
+            <a href={item.external_urls.spotify} target="_blank">
+            <Card className={classes.root}  style={{backgroundColor:'rgb(65, 62, 62)',color:'white'}}>
               <CardActionArea>
-              <Avatar src={item.images[0].url} style={{width: 300, height: 300}}/>
+              <img src={item.images[1].url} className="img-fluid rounded-circle py-2"></img>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                  {item.name}
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography  style={{color:'white'}} variant="body2" color="textSecondary" component="p">
                  Artist
                 </Typography>
               </CardContent>
-            </CardActionArea>
-           
+            </CardActionArea> 
           </Card>
+          </a>
         </Grid>
         )
       })}
       </Grid>
+      </div>
     </div>
   )
 }
