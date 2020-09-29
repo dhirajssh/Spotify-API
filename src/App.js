@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Albums from '../src/pages/Albums';
 import Artists from '../src/pages/Artists';
+import Genre from '../src/pages/Genre';
 
 function App() {
 const [token, setToken] = useState(null);
@@ -57,6 +58,7 @@ useEffect(() => {
             <Route path="/home" component={Home} />
             <Route path="/albums" exact component={Albums} />
             <Route path="/artists" exact component={Artists} />
+            <Route path="/genres" exact component={Genre} />
           </Switch>
         
       </div>

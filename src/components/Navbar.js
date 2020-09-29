@@ -68,6 +68,23 @@ export default function Navbar() {
       console.log(error);
     })
 
+    axios({
+      method:"GET",
+      url:'https://api.spotify.com/v1/browse/categories?country=IN&locale=sv_SE&limit=21&offset=0',
+      headers:{
+        Accept:"application/json",
+        "Content-Type":"application/json",
+        Authorization:`Bearer ${token}`
+      }
+    })
+    .then(response=>{
+      console.log(response);
+      sessionStorage.setItem('genre',JSON.stringify(response));
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+
   },[])
 
   return (
