@@ -7,6 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { NavLink } from 'react-router-dom';
+import {getTokenFromUrl} from '../spotify';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
 
   const classes = useStyles();
+
+  const _token=getTokenFromUrl();
 
   const [token,setToken] = useState(sessionStorage.getItem('token'));
   const [user,setUser] = useState(null);
