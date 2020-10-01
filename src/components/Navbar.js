@@ -27,11 +27,8 @@ export default function Navbar() {
 
   const classes = useStyles();
 
-  const _token=getTokenFromUrl();
-
   const [token,setToken] = useState(sessionStorage.getItem('token'));
   const [user,setUser] = useState(null);
-  console.log(token);
 
   useEffect(()=>{
     setToken(sessionStorage.getItem('token'));
@@ -47,7 +44,6 @@ export default function Navbar() {
       },
     })
     .then((response)=>{
-      setUser(response.data);
       sessionStorage.setItem('user',JSON.stringify(response));
     })
     .catch(error=>{
@@ -64,7 +60,6 @@ export default function Navbar() {
       }
     })
     .then((response)=>{
-      console.log(response);
       sessionStorage.setItem('artists',JSON.stringify(response));
     })
     .catch(error=>{
@@ -81,11 +76,28 @@ export default function Navbar() {
       }
     })
     .then(response=>{
-      console.log(response);
       sessionStorage.setItem('genre',JSON.stringify(response));
     })
     .catch(err=>{
       console.log(err);
+    })
+
+    axios({
+      method:"GET",
+      url:'https://api.spotify.com/v1/me/albums?offset=0&limit=20',
+      headers:{
+        Accept:"application/json",
+        "Content-Type":"application/json",
+        Authorization:`Bearer ${token}`
+      },data:{
+  
+      },
+    })
+    .then((response)=>{
+      sessionStorage.setItem('albums',JSON.stringify(response));
+    })
+    .catch(error=>{
+      console.log(error);
     })
 
   },[])

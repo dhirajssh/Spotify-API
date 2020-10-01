@@ -20,7 +20,6 @@ let artists;
 useEffect(() => {
 
   const _token = getTokenFromUrl()
-  window.location.hash = "";
 
   if(_token){
     setToken(_token);
