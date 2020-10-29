@@ -27,7 +27,7 @@ function Albums() {
   
 
   return (
-    <div style={{backgroundColor:'black',height:'100vh',backgroundSize:"cover"}}>
+    <div style={{backgroundColor:'black',height:'100%',backgroundSize:"cover"}}>
       <div className="container-fluid">
       <Grid container spacing={3}>
       {album.data.items.map( item=>{
